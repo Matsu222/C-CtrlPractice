@@ -1,0 +1,11 @@
+D:\C#\ModControlSimu\ModControlSimu\bin\Debug\net6.0\ModControlSimu.deps.json
+D:\C#\ModControlSimu\ModControlSimu\bin\Debug\net6.0\ModControlSimu.dll
+D:\C#\ModControlSimu\ModControlSimu\bin\Debug\net6.0\ModControlSimu.pdb
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.AssemblyInfoInputs.cache
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.AssemblyInfo.cs
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.csproj.CoreCompileInputs.cache
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.dll
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\refint\ModControlSimu.dll
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ModControlSimu.pdb
+D:\C#\ModControlSimu\ModControlSimu\obj\Debug\net6.0\ref\ModControlSimu.dll

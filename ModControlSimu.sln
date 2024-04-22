@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModControlSimu", "ModControlSimu\ModControlSimu.csproj", "{24330EBF-AF3E-4EE4-B828-C0B132F618C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuTester", "SimuTester\SimuTester.csproj", "{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24330EBF-AF3E-4EE4-B828-C0B132F618C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24330EBF-AF3E-4EE4-B828-C0B132F618C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24330EBF-AF3E-4EE4-B828-C0B132F618C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24330EBF-AF3E-4EE4-B828-C0B132F618C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E5935D3-EAC9-4DB1-BE26-A59AE798CD70}
+	EndGlobalSection
+EndGlobal

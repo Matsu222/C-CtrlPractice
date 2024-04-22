@@ -1,0 +1,105 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0-windows7.0": {
+      "ModControlSimu/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ModControlSimu.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModControlSimu.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ModControlSimu/1.0.0": {
+      "type": "project",
+      "path": "../ModControlSimu/ModControlSimu.csproj",
+      "msbuildProject": "../ModControlSimu/ModControlSimu.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0-windows7.0": [
+      "ModControlSimu >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jazzm\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\C#\\ModControlSimu\\SimuTester\\SimuTester.csproj",
+      "projectName": "SimuTester",
+      "projectPath": "D:\\C#\\ModControlSimu\\SimuTester\\SimuTester.csproj",
+      "packagesPath": "C:\\Users\\jazzm\\.nuget\\packages\\",
+      "outputPath": "D:\\C#\\ModControlSimu\\SimuTester\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\jazzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "projectReferences": {
+            "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj": {
+              "projectPath": "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
