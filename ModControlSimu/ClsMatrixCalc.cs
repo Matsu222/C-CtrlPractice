@@ -196,6 +196,18 @@ namespace ModControlSimu
         }
 
         /// <summary>
+        /// N次の単位行列を取得
+        /// </summary>
+        /// <param name="N">次数</param>
+        /// <returns>単位行列</returns>
+        public ClsMatrix GetIMatrix(int N)
+        {
+            var I = new ClsMatrix(N, N);
+            for (int i = 0; i < N; i++) I[i, i] = 1;
+            return I;
+        }
+
+        /// <summary>
         /// 行の数を取得
         /// </summary>
         /// <returns>行の数</returns>

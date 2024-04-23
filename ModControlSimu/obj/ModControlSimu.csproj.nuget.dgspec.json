@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj": {}
+    "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.csproj": {}
   },
   "projects": {
-    "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj": {
+    "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj",
+        "projectUniqueName": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.csproj",
         "projectName": "ModControlSimu",
-        "projectPath": "D:\\C#\\ModControlSimu\\ModControlSimu\\ModControlSimu.csproj",
+        "projectPath": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.csproj",
         "packagesPath": "C:\\Users\\jazzm\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\ModControlSimu\\ModControlSimu\\obj\\",
+        "outputPath": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vrkbuvPuudUMn4h11hh6T+nvnRtAkZ1LrGGJ895TnRS3E/0iU+v4fc4TNsvgsq0ggqyNGdZDDJDorHJgTa2PJw==",
+  "dgSpecHash": "A1Ykl0wQ4Ne9kFHyuJlNPzA/xTSIby1RLT99fCHbTo3ry9evNEq3Iiu0jjqxWFuALopGgHa1Jd4blqiSsr7FQA==",
   "success": true,
-  "projectFilePath": "D:\\C#\\ModControlSimu\\SimuTester\\SimuTester.csproj",
+  "projectFilePath": "D:\\C#\\C-CtrlPractice\\SimuTester\\SimuTester.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
