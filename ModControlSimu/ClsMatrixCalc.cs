@@ -14,7 +14,7 @@ namespace ModControlSimu
     /// <summary>
     /// 行列型とその基本演算の定義クラス
     /// </summary>
-    public class ClsMatrix
+    public class Matrix
     {
         /// <summary>格納するデータ</summary>
         protected double[][]? Data;
@@ -22,17 +22,18 @@ namespace ModControlSimu
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public ClsMatrix()
+        public Matrix()
         {
             Data = null;
         }
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ<br/>
+        /// 任意のサイズで初期化
         /// </summary>
         /// <param name="Row">初期化時の行数</param>
         /// <param name="Col">初期化時の列数</param>
-        public ClsMatrix(int Row, int Col)
+        public Matrix(int Row, int Col)
         {
             Array.Resize(ref Data, Row);
             Parallel.For(0, Row, Item =>
@@ -42,10 +43,11 @@ namespace ModControlSimu
         }
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ<br/>
+        /// 任意の配列データで初期化
         /// </summary>
         /// <param name="Data">初期化時の行列</param>
-        protected ClsMatrix(double[][] InitData)
+        public Matrix(double[][] InitData)
         {
             Array.Resize(ref Data, InitData.Length);
             Parallel.For(0, InitData.Length, Row =>
@@ -56,7 +58,6 @@ namespace ModControlSimu
                     Data[Row][Col] = InitData[Row][Col];
                 });
             });
-
         }
 
         /// <summary>
@@ -108,32 +109,32 @@ namespace ModControlSimu
         /// <summary>
         /// 行列用の+演算子
         /// </summary>
-        /// <param name="A">Matrix A</param>
+        /// <param name="X">Matrix A</param>
         /// <returns>計算結果</returns>
-        public static ClsMatrix operator +(ClsMatrix A)
+        public static Matrix operator +(Matrix X)
         {
-            return A;
+            return X;
         }
 
         /// <summary>
         /// 行列用の+演算子
         /// </summary>
-        /// <param name="A">Matrix A</param>
-        /// <param name="B">Matrix B</param>
+        /// <param name="X">Matrix X</param>
+        /// <param name="Y">Matrix Y</param>
         /// <returns>計算結果 (計算不可では空行列)</returns>
-        public static ClsMatrix operator +(ClsMatrix A, ClsMatrix B)
+        public static Matrix operator +(Matrix X, Matrix Y)
         {
             //行列のサイズをチェック
-            if (A.RowCount() != B.RowCount()) return new ClsMatrix();
-            if (A.ColCount() != B.ColCount()) return new ClsMatrix();
+            if (X.RowCount() != Y.RowCount()) return new Matrix();
+            if (X.ColCount() != Y.ColCount()) return new Matrix();
 
             //並列処理で高速化
-            var Ans = new ClsMatrix(A.RowCount(), A.ColCount());
-            Parallel.For(0, A.RowCount(), Row =>
+            var Ans = new Matrix(X.RowCount(), X.ColCount());
+            Parallel.For(0, X.RowCount(), Row =>
             {
-                Parallel.For(0, A.ColCount(), Col =>
+                Parallel.For(0, X.ColCount(), Col =>
                 {
-                    Ans[Row, Col] = A[Row, Col] + B[Row, Col];
+                    Ans[Row, Col] = X[Row, Col] + Y[Row, Col];
                 });
             });
             return Ans;
@@ -142,16 +143,16 @@ namespace ModControlSimu
         /// <summary>
         /// 行列用の-演算子
         /// </summary>
-        /// <param name="A">Matrix A</param>
+        /// <param name="X">Matrix X</param>
         /// <returns>計算結果</returns>
-        public static ClsMatrix operator -(ClsMatrix A)
+        public static Matrix operator -(Matrix X)
         {
-            var Ans = new ClsMatrix();
-            Parallel.For(0, A.RowCount(), Row =>
+            var Ans = new Matrix();
+            Parallel.For(0, X.RowCount(), Row =>
             {
-                Parallel.For(0, A.ColCount(), Col =>
+                Parallel.For(0, X.ColCount(), Col =>
                 {
-                    Ans[Row, Col] = -A[Row, Col];
+                    Ans[Row, Col] = -X[Row, Col];
                 });
             });
             return Ans;
@@ -160,35 +161,35 @@ namespace ModControlSimu
         /// <summary>
         /// 行列用の-演算子
         /// </summary>
-        /// <param name="A">Matrix A</param>
-        /// <param name="B">Matrix B</param>
+        /// <param name="X">Matrix X</param>
+        /// <param name="Y">Matrix Y</param>
         /// <returns>計算結果 (計算不可では空行列)</returns>
-        public static ClsMatrix operator -(ClsMatrix A, ClsMatrix B)
+        public static Matrix operator -(Matrix X, Matrix Y)
         {
-            return A + (-B);
+            return X + (-Y);
         }
 
         /// <summary>
         /// 行列用の*演算子
         /// </summary>
-        /// <param name="A">Matrix A</param>
-        /// <param name="B">Matrix B</param>
+        /// <param name="X">Matrix X</param>
+        /// <param name="Y">Matrix Y</param>
         /// <returns>計算結果 (計算不可では空行列)</returns>
-        public static ClsMatrix operator *(ClsMatrix A, ClsMatrix B)
+        public static Matrix operator *(Matrix X, Matrix Y)
         {
             //行列のサイズをチェック
-            if (A.ColCount() != B.RowCount()) return new ClsMatrix();
+            if (X.ColCount() != Y.RowCount()) return new Matrix();
 
             //並列処理で高速化
-            ClsMatrix Ans = new ClsMatrix(A.RowCount(), B.ColCount());
-            Parallel.For(0, A.RowCount(), Row =>
+            var Ans = new Matrix(X.RowCount(), Y.ColCount());
+            Parallel.For(0, X.RowCount(), Row =>
             {
-                Parallel.For(0, B.ColCount(), Col =>
+                Parallel.For(0, Y.ColCount(), Col =>
                 {
                     Ans[Row, Col] = 0;
-                    Parallel.For(0, A.ColCount(), i =>
+                    Parallel.For(0, X.ColCount(), i =>
                     {
-                        Ans[Row, Col] += A[Row, i] * B[i, Col];
+                        Ans[Row, Col] += X[Row, i] * Y[i, Col];
                     });
                 });
             });
@@ -200,9 +201,9 @@ namespace ModControlSimu
         /// </summary>
         /// <param name="N">次数</param>
         /// <returns>単位行列</returns>
-        public ClsMatrix GetIMatrix(int N)
+        public static Matrix GetIMatrix(int N)
         {
-            var I = new ClsMatrix(N, N);
+            var I = new Matrix(N, N);
             for (int i = 0; i < N; i++) I[i, i] = 1;
             return I;
         }
@@ -238,7 +239,7 @@ namespace ModControlSimu
             if (Data == null) return -1;
             //上三角行列へ変形し対角成分のみで計算する
             double? Ans = 1;
-            var UpTriMat = new ClsMatrix(this.Data);
+            var UpTriMat = new Matrix(this.Data);
             for (int ZeroCol = 0; ZeroCol < ColCount() - 1; ZeroCol++)
             {
                 if (UpTriMat[ZeroCol, ZeroCol] == 0)
@@ -272,10 +273,10 @@ namespace ModControlSimu
         /// 転置行列が存在しない場合は空行列を返します
         /// </summary>
         /// <returns>転置行列</returns>
-        public ClsMatrix Transpose()
+        public Matrix Transpose()
         {
-            if (Data == null) return new ClsMatrix();
-            var TransMat = new ClsMatrix(this.ColCount(), this.RowCount());
+            if (Data == null) return new Matrix();
+            var TransMat = new Matrix(this.ColCount(), this.RowCount());
             Parallel.For(0, this.RowCount(), Row =>
             {
                 Parallel.For(0, this.ColCount(), Col =>
@@ -291,13 +292,13 @@ namespace ModControlSimu
         /// 逆行列が存在しない場合は空行列を返します
         /// </summary>
         /// <returns>逆行列</returns>
-        public ClsMatrix Inv()
+        public Matrix Inv()
         {
-            if (RowCount() != ColCount()) return new ClsMatrix();
-            if (Det() == 0) return new ClsMatrix();
+            if (RowCount() != ColCount()) return new Matrix();
+            if (Det() == 0) return new Matrix();
 
             //掃き出し法の対象とする行列を計算
-            var AI = new ClsMatrix(RowCount(), ColCount() * 2);
+            var AI = new Matrix(RowCount(), ColCount() * 2);
             Parallel.For(0, RowCount(), Row =>
             {
                 Parallel.For(0, ColCount() * 2, Col =>
@@ -309,7 +310,7 @@ namespace ModControlSimu
             });
             //掃き出し法の対象から逆行列部分を抽出
             var IB = AI.RowReduction();
-            var Ans = new ClsMatrix(RowCount(), ColCount());
+            var Ans = new Matrix(RowCount(), ColCount());
             Parallel.For(0, RowCount(), Row =>
             {
                 Parallel.For(0, ColCount(), Col =>
@@ -325,7 +326,7 @@ namespace ModControlSimu
         /// ムーア・ペンローズの疑似逆行列を取得
         /// </summary>
         /// <returns>疑似逆行列</returns>
-        public ClsMatrix Pinv()
+        public Matrix Pinv()
         {
             return (this.Transpose() * this).Inv() * this.Transpose();
         }
@@ -335,14 +336,14 @@ namespace ModControlSimu
         /// 計算不可能な場合は空行列を返します
         /// </summary>
         /// <returns>掃き出し法の結果</returns>
-        public ClsMatrix RowReduction()
+        public Matrix RowReduction()
         {
-            if (Data == null) return new ClsMatrix();
-            if (RowCount() >= ColCount()) return new ClsMatrix();
-            if (this.GetSquarePart().Det() == 0) return new ClsMatrix();
+            if (Data == null) return new Matrix();
+            if (RowCount() >= ColCount()) return new Matrix();
+            if (this.GetSquarePart().Det() == 0) return new Matrix();
 
             //計算用に別の行列に格納
-            var Mat = new ClsMatrix(this.Data);
+            var Mat = new Matrix(this.Data);
 
             //対角成分より下を"0"にする
             for (int ZeroCol = 0; ZeroCol < Mat.RowCount() - 1; ZeroCol++)
@@ -354,7 +355,7 @@ namespace ModControlSimu
                     {
                         if (Mat[SwapRow, ZeroCol] != 0) break;
                     }
-                    if (SwapRow == Mat.RowCount()) return new ClsMatrix();
+                    if (SwapRow == Mat.RowCount()) return new Matrix();
                     Mat.RowSwap(ZeroCol, SwapRow);
                 }
                 for (int Row = ZeroCol + 1; Row < Mat.RowCount(); Row++)
@@ -395,13 +396,13 @@ namespace ModControlSimu
         /// 正方行列部分を取得
         /// </summary>
         /// <returns>抽出した正方行列</returns>
-        public ClsMatrix GetSquarePart()
+        public Matrix GetSquarePart()
         {
             int N;
             if (RowCount() < ColCount()) N = RowCount();
             else N = ColCount();
 
-            var SquareMat = new ClsMatrix(N, N);
+            var SquareMat = new Matrix(N, N);
             Parallel.For(0, N, Row =>
             {
                 Parallel.For(0, N, Col =>
@@ -418,9 +419,9 @@ namespace ModControlSimu
         /// </summary>
         /// <param name="RowA">行1</param>
         /// <param name="RowB">行2</param>
-        protected ClsMatrix RowSwap(int RowA, int RowB)
+        protected Matrix RowSwap(int RowA, int RowB)
         {
-            if (Data == null) return new ClsMatrix();
+            if (Data == null) return new Matrix();
             double[] TmpArray = new double[ColCount()];
             Array.Copy(Data[RowA], TmpArray, ColCount());
             Array.Copy(Data[RowB], Data[RowA], ColCount());

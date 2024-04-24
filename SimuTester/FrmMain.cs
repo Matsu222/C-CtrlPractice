@@ -3,14 +3,16 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Text;
 using ModControlSimu;
+using System.Drawing.Printing;
+using System.Configuration;
 
 namespace SimuTester
 {
     public partial class FrmMain : Form
     {
-        private ModControlSimu.ClsTfSs ClsSimu = new ModControlSimu.ClsTfSs();
-        private ModControlSimu.ClsMatrix A = new ModControlSimu.ClsMatrix();
-        private ModControlSimu.ClsMatrix B = new ModControlSimu.ClsMatrix();
+        private readonly ClsTfSs ClsSimu = new();
+        private readonly Matrix A = new();
+        private readonly Matrix B = new();
 
         public FrmMain()
         {
@@ -25,7 +27,7 @@ namespace SimuTester
         private void Matrix_Button_Click(object sender, EventArgs e)
         {
             Ans_Box.Text = string.Empty;
-            Random Rnd = new Random();
+            var Rnd = new Random();
             for (int Row = 0; Row < 10; Row++)
             {
                 for (int Col = 0; Col < 2; Col++)
@@ -62,7 +64,7 @@ namespace SimuTester
             Num[0] = Den[0];
 
             ClsSimu.SetSys(Den, Num);
-            ClsSimu.GetSys(out ClsMatrix A, out ClsMatrix B, out ClsMatrix C, out ClsMatrix D);
+            ClsSimu.GetSys(out Matrix A, out Matrix B, out Matrix C, out Matrix D);
             double[] Freq = new double[100];
             for (int Point = 0; Point < Freq.Length; Point++) Freq[Point] = (double)Point / 10 + 0.01;
             ClsSimu.FreqResp(Freq, out double[] Gain, out double[] Phase, 0);
@@ -91,6 +93,53 @@ namespace SimuTester
 
             Ans_Box.Text = Sb.ToString();
 
+        }
+
+        private void MathCheck_Button_Click(object sender, EventArgs e)
+        {
+            int[] Perm = new int[] { 1, 2, 3, 4, 5, 6 };
+            var AllPattern = ClsMathExpansion.AllPermutation(Perm);
+            var Sb = new StringBuilder();
+            for (int i = 0; i < AllPattern.Count; i++)
+            {
+                Sb.Append(string.Join(",", AllPattern[i]));
+                Sb.Append("\r\n");
+            }
+            Ans_Box.Text = Sb.ToString();
+        }
+
+        private void Polynomial_Button_Click(object sender, EventArgs e)
+        {
+            var Sb = new StringBuilder();
+            double[] Coef = new double[3];
+            var Rnd = new Random();
+            for (int Order = 0; Order < Coef.Length; Order++)
+            {
+                Coef[Order] = Rnd.Next(-10, 10);
+            }
+            var A = new Polynomial(Coef);
+            Sb.Append("A=\t");
+            Sb.Append(A.ToString());
+            Sb.Append("\r\n\r\n");
+            for (int Order = 0; Order < Coef.Length; Order++)
+            {
+                Coef[Order] = Rnd.Next(-10, 10);
+            }
+            var B = new Polynomial(Coef);
+            Sb.Append("B=\t");
+            Sb.Append(B.ToString());
+            Sb.Append("\r\n\r\n");
+            Sb.Append("A+B=\t");
+            Sb.Append((A + B).ToString());
+            Sb.Append("\r\n\r\n");
+            Sb.Append("A-B=\t");
+            Sb.Append((A - B).ToString());
+
+            Sb.Append("\r\n\r\n");
+            Sb.Append("A*B=\t");
+            Sb.Append((A * B).ToString());
+
+            Ans_Box.Text = Sb.ToString();
         }
     }
 }

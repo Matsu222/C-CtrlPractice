@@ -31,6 +31,8 @@
             Ans_Box = new TextBox();
             Matrix_Button = new Button();
             FreqResp_Button = new Button();
+            MathCheck_Button = new Button();
+            Polynomial_Button = new Button();
             SuspendLayout();
             // 
             // Ans_Box
@@ -62,11 +64,33 @@
             FreqResp_Button.UseVisualStyleBackColor = true;
             FreqResp_Button.Click += FreqResp_Button_Click;
             // 
+            // MathCheck_Button
+            // 
+            MathCheck_Button.Location = new Point(285, 15);
+            MathCheck_Button.Name = "MathCheck_Button";
+            MathCheck_Button.Size = new Size(120, 40);
+            MathCheck_Button.TabIndex = 1;
+            MathCheck_Button.Text = "MathCheck";
+            MathCheck_Button.UseVisualStyleBackColor = true;
+            MathCheck_Button.Click += MathCheck_Button_Click;
+            // 
+            // Polynomial_Button
+            // 
+            Polynomial_Button.Location = new Point(420, 15);
+            Polynomial_Button.Name = "Polynomial_Button";
+            Polynomial_Button.Size = new Size(120, 40);
+            Polynomial_Button.TabIndex = 2;
+            Polynomial_Button.Text = "Polynomial";
+            Polynomial_Button.UseVisualStyleBackColor = true;
+            Polynomial_Button.Click += Polynomial_Button_Click;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(778, 744);
+            Controls.Add(Polynomial_Button);
+            Controls.Add(MathCheck_Button);
             Controls.Add(FreqResp_Button);
             Controls.Add(Matrix_Button);
             Controls.Add(Ans_Box);
@@ -83,5 +107,7 @@
         private TextBox Ans_Box;
         private Button Matrix_Button;
         private Button FreqResp_Button;
+        private Button MathCheck_Button;
+        private Button Polynomial_Button;
     }
 }

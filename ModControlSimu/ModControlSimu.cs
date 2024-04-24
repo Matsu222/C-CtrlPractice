@@ -18,13 +18,13 @@ namespace ModControlSimu
         /// <summary>伝達関数の分子多項式係数</summary>
         private double[][] _TfNum;
         /// <summary>状態方程式のA行列</summary>
-        private ClsMatrix _A;
+        private Matrix _A;
         /// <summary>状態方程式のB行列</summary>
-        private ClsMatrix _B;
+        private Matrix _B;
         /// <summary>状態方程式のC行列</summary>
-        private ClsMatrix _C;
+        private Matrix _C;
         /// <summary>状態方程式のD行列</summary>
-        private ClsMatrix _D;
+        private Matrix _D;
 
         /// <summary>
         /// コンストラクタ
@@ -33,10 +33,10 @@ namespace ModControlSimu
         {
             _TfDen = new double[1][];
             _TfNum = new double[1][];
-            _A = new ClsMatrix();
-            _B = new ClsMatrix();
-            _C = new ClsMatrix();
-            _D = new ClsMatrix();
+            _A = new Matrix();
+            _B = new Matrix();
+            _C = new Matrix();
+            _D = new Matrix();
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace ModControlSimu
                 _TfNum[0][i] = Num[i] / Den[_TfDen.Length - 1];
             });
 
-            _A = new ClsMatrix(Den.Length, Den.Length);
-            _B = new ClsMatrix(Den.Length, 1);
-            _C = new ClsMatrix(1, Den.Length);
-            _D = new ClsMatrix();
+            _A = new Matrix(Den.Length, Den.Length);
+            _B = new Matrix(Den.Length, 1);
+            _C = new Matrix(1, Den.Length);
+            _D = new Matrix();
 
             Parallel.For(0, Den.Length - 1, i =>
             {
@@ -89,7 +89,7 @@ namespace ModControlSimu
         /// <param name="B">B行列</param>
         /// <param name="C">C行列</param>
         /// <param name="D">D行列</param>
-        public void SetSys(ClsMatrix A, ClsMatrix B, ClsMatrix C, ClsMatrix D)
+        public void SetSys(Matrix A, Matrix B, Matrix C, Matrix D)
         {
             _A = A;
             _B = B;
@@ -124,7 +124,7 @@ namespace ModControlSimu
         /// <param name="B">B行列</param>
         /// <param name="C">C行列</param>
         /// <param name="D">D行列</param>
-        public void GetSys(out ClsMatrix A, out ClsMatrix B, out ClsMatrix C, out ClsMatrix D)
+        public void GetSys(out Matrix A, out Matrix B, out Matrix C, out Matrix D)
         {
             A = _A;
             B = _B;
