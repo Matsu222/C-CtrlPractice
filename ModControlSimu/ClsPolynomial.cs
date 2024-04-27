@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,14 +17,14 @@ namespace ModControlSimu
     public class Polynomial
     {
         /// <summary>格納する多項式の係数配列</summary>
-        double[]? Data;
+        private double[]? _Data;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public Polynomial()
         {
-            Data = null;
+            _Data = null;
         }
 
         /// <summary>
@@ -32,7 +34,7 @@ namespace ModControlSimu
         /// <param name="Order">次数</param>
         public Polynomial(int Order)
         {
-            Data = new double[Order];
+            _Data = new double[Order];
         }
 
         /// <summary>
@@ -42,10 +44,10 @@ namespace ModControlSimu
         /// <param name="InitData">初期化する係数配列</param>
         public Polynomial(double[] InitData)
         {
-            Data = new double[InitData.Length];
+            _Data = new double[InitData.Length];
             Parallel.For(0, InitData.Length, Order =>
             {
-                Data[Order] = InitData[Order];
+                _Data[Order] = InitData[Order];
             });
         }
 
@@ -112,14 +114,32 @@ namespace ModControlSimu
         /// <returns>計算結果</returns>
         public static Polynomial operator *(Polynomial X, Polynomial Y)
         {
-            var Coef = new double[X.GetOrder() + Y.GetOrder() + 1];
-            Parallel.For(0, X.GetOrder() + 1, OrderX =>
+            if (X.GetOrder() != -1 & Y.GetOrder() != -1)
             {
-                Parallel.For(0, Y.GetOrder() + 1, OrderY =>
+                var Coef = new double[X.GetOrder() + Y.GetOrder() + 1];
+                Parallel.For(0, X.GetOrder() + 1, OrderX =>
                 {
-                    Coef[OrderX + OrderY] += X[OrderX] * Y[OrderY];
+                    Parallel.For(0, Y.GetOrder() + 1, OrderY =>
+                    {
+                        Coef[OrderX + OrderY] += X[OrderX] * Y[OrderY];
+                    });
                 });
-            });
+                return new Polynomial(Coef);
+            }
+            else
+            {
+                return new Polynomial();
+            }
+        }
+
+        /// <summary>
+        /// double型からPolinomial型への変換演算子
+        /// </summary>
+        /// <param name="A"></param>
+        public static implicit operator Polynomial(double A)
+        {
+            var Coef = new double[1];
+            Coef[0] = A;
             return new Polynomial(Coef);
         }
 
@@ -132,33 +152,33 @@ namespace ModControlSimu
         {
             set
             {
-                if (Data == null)
+                if (_Data == null)
                 {
-                    Data = new double[Order + 1];
-                    Data[Order] = value;
+                    _Data = new double[Order + 1];
+                    _Data[Order] = value;
                 }
                 else
                 {
-                    if (Data.Length <= Order)
+                    if (_Data.Length <= Order)
                     {
                         double[] StoreData = new double[Order + 1];
-                        Parallel.For(0, Data.Length, i =>
+                        Parallel.For(0, _Data.Length, i =>
                         {
-                            StoreData[i] = Data[i];
+                            StoreData[i] = _Data[i];
                         });
-                        Data = new double[Order + 1];
-                        Parallel.For(0, Data.Length, i =>
+                        _Data = new double[Order + 1];
+                        Parallel.For(0, _Data.Length, i =>
                         {
-                            Data[i] = StoreData[i];
+                            _Data[i] = StoreData[i];
                         });
                     }
-                    Data[Order] = value;
+                    _Data[Order] = value;
                 }
             }
             get
             {
-                if (Data == null) return 0;
-                if (Data.Length > Order) return Data[Order];
+                if (_Data == null) return 0;
+                if (_Data.Length > Order) return _Data[Order];
                 return 0;
             }
         }
@@ -170,8 +190,29 @@ namespace ModControlSimu
         /// <returns>次数</returns>
         public int GetOrder()
         {
-            if (Data == null) return -1;
-            return Data.Length - 1;
+            if (_Data == null) return -1;
+            return _Data.Length - 1;
+        }
+
+        /// <summary>
+        /// 多項式の任意の点での値を計算
+        /// </summary>
+        /// <param name="X">任意の点(複素数)</param>
+        /// <returns>計算結果</returns>
+        public Complex GetValue(Complex X)
+        {
+            if (_Data == null) return new Complex();
+            var Ans = new Complex(0, 0);
+            Parallel.For(0, GetOrder() + 1, Order =>
+            {
+                var OrderValue = new Complex(1, 0);
+                Parallel.For(0, Order, i =>
+                {
+                    OrderValue *= X;
+                });
+                Ans += _Data[Order] * OrderValue;
+            });
+            return Ans;
         }
 
         /// <summary>
@@ -183,14 +224,14 @@ namespace ModControlSimu
         /// <returns>多項式文字列</returns>
         public string ToString(bool IsOnlyCoef = false, string Format = "", char Literal = 's')
         {
-            if (Data == null) return "";
+            if (_Data == null) return "";
             if (IsOnlyCoef)
             {
                 var Sb = new StringBuilder();
                 Sb.Append('(');
                 for (int Order = this.GetOrder(); Order >= 0; Order--)
                 {
-                    Sb.Append(Data[Order].ToString(Format));
+                    Sb.Append(_Data[Order].ToString(Format));
                     Sb.Append('\t');
                 }
                 Sb.Append(')');
@@ -201,25 +242,25 @@ namespace ModControlSimu
                 var Sb = new StringBuilder();
                 for (int Order = this.GetOrder(); Order >= 0; Order--)
                 {
-                    if (Data[Order] == 0) continue;
-                    if (Order != this.GetOrder() & Data[Order] > 0) Sb.Append('+');
+                    if (_Data[Order] == 0) continue;
+                    if (Order != this.GetOrder() & _Data[Order] > 0) Sb.Append('+');
 
                     if (Order > 1)
                     {
-                        if (Data[Order] == -1) Sb.Append('-');
-                        else if (Data[Order] != 1) Sb.Append(Data[Order].ToString(Format));
+                        if (_Data[Order] == -1) Sb.Append('-');
+                        else if (_Data[Order] != 1) Sb.Append(_Data[Order].ToString(Format));
                         Sb.Append(Literal);
                         Sb.Append('^').Append(Order);
                     }
                     else if (Order == 1)
                     {
-                        if (Data[Order] == -1) Sb.Append('-');
-                        else if (Data[Order] != 1) Sb.Append(Data[Order].ToString(Format));
+                        if (_Data[Order] == -1) Sb.Append('-');
+                        else if (_Data[Order] != 1) Sb.Append(_Data[Order].ToString(Format));
                         Sb.Append(Literal);
                     }
                     else
                     {
-                        Sb.Append(Data[Order].ToString(Format));
+                        Sb.Append(_Data[Order].ToString(Format));
                     }
                     Sb.Append(' ');
                 }

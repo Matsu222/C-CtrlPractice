@@ -5,6 +5,7 @@ using System.Text;
 using ModControlSimu;
 using System.Drawing.Printing;
 using System.Configuration;
+using System.Numerics;
 
 namespace SimuTester
 {
@@ -63,10 +64,10 @@ namespace SimuTester
             Den[0] = 10;
             Num[0] = Den[0];
 
-            ClsSimu.SetSys(Den, Num);
+            ClsSimu.SetSys(new Polynomial(Den), new Polynomial(Num));
             ClsSimu.GetSys(out Matrix A, out Matrix B, out Matrix C, out Matrix D);
             double[] Freq = new double[100];
-            for (int Point = 0; Point < Freq.Length; Point++) Freq[Point] = (double)Point / 10 + 0.01;
+            for (int Point = 0; Point < Freq.Length; Point++) Freq[Point] = (double)Point / 100 + 0.01;
             ClsSimu.FreqResp(Freq, out double[] Gain, out double[] Phase, 0);
             var Sb = new StringBuilder();
             for (int Point = 0; Point < Gain.Length; Point++)
@@ -111,7 +112,7 @@ namespace SimuTester
         private void Polynomial_Button_Click(object sender, EventArgs e)
         {
             var Sb = new StringBuilder();
-            double[] Coef = new double[3];
+            var Coef = new double[4];
             var Rnd = new Random();
             for (int Order = 0; Order < Coef.Length; Order++)
             {
@@ -121,23 +122,18 @@ namespace SimuTester
             Sb.Append("A=\t");
             Sb.Append(A.ToString());
             Sb.Append("\r\n\r\n");
-            for (int Order = 0; Order < Coef.Length; Order++)
-            {
-                Coef[Order] = Rnd.Next(-10, 10);
-            }
-            var B = new Polynomial(Coef);
-            Sb.Append("B=\t");
-            Sb.Append(B.ToString());
+            Sb.Append("A(0)=\t");
+            Sb.Append(A.GetValue(0).ToString());
             Sb.Append("\r\n\r\n");
-            Sb.Append("A+B=\t");
-            Sb.Append((A + B).ToString());
+            Sb.Append("A(1)=\t");
+            Sb.Append(A.GetValue(1).ToString());
             Sb.Append("\r\n\r\n");
-            Sb.Append("A-B=\t");
-            Sb.Append((A - B).ToString());
-
+            Sb.Append("A(i)=\t");
+            Sb.Append(A.GetValue(new Complex(0, 1)).ToString());
             Sb.Append("\r\n\r\n");
-            Sb.Append("A*B=\t");
-            Sb.Append((A * B).ToString());
+            Sb.Append("A(1+i)=\t");
+            Sb.Append(A.GetValue(new Complex(1, 1)).ToString());
+            Sb.Append("\r\n\r\n");
 
             Ans_Box.Text = Sb.ToString();
         }

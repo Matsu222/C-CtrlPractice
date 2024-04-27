@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "D:\\C#\\C-CtrlPractice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|D:\\C#\\C-CtrlPractice\\simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|d:\\c#\\c-ctrlpractice\\modcontrolsimu\\clafracpolynomial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\clafracpolynomial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|d:\\c#\\c-ctrlpractice\\simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|solutionrelative:simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|d:\\c#\\c-ctrlpractice\\modcontrolsimu\\clspolynomial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|D:\\C#\\C-CtrlPractice\\modcontrolsimu\\clspolynomial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\clspolynomial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|d:\\c#\\c-ctrlpractice\\modcontrolsimu\\clsmathexpansion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\clsmathexpansion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|d:\\c#\\c-ctrlpractice\\simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|solutionrelative:simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|D:\\C#\\C-CtrlPractice\\modcontrolsimu\\modcontrolsimu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\modcontrolsimu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|D:\\C#\\C-CtrlPractice\\modcontrolsimu\\clsmatrixcalc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\clsmatrixcalc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|D:\\C#\\C-CtrlPractice\\simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4903E52C-584E-4FC0-BD20-2E11DC2BA00A}|SimuTester\\SimuTester.csproj|solutionrelative:simutester\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|D:\\C#\\C-CtrlPractice\\modcontrolsimu\\modcontrolsimu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\modcontrolsimu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|D:\\C#\\C-CtrlPractice\\modcontrolsimu\\clsmathexpansion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24330EBF-AF3E-4EE4-B828-C0B132F618C3}|ModControlSimu\\ModControlSimu.csproj|solutionrelative:modcontrolsimu\\clsmathexpansion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,43 +38,55 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClsPolynomial.cs",
-              "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsPolynomial.cs",
-              "RelativeDocumentMoniker": "ModControlSimu\\ClsPolynomial.cs",
-              "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsPolynomial.cs",
-              "RelativeToolTip": "ModControlSimu\\ClsPolynomial.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAAwHoAAAAoAAAA",
+              "DocumentIndex": 0,
+              "Title": "ClaFracPolynomial.cs",
+              "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClaFracPolynomial.cs",
+              "RelativeDocumentMoniker": "ModControlSimu\\ClaFracPolynomial.cs",
+              "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClaFracPolynomial.cs",
+              "RelativeToolTip": "ModControlSimu\\ClaFracPolynomial.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAhwGQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T10:08:00.171Z",
+              "WhenOpened": "2024-04-27T14:06:55.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs",
+              "RelativeDocumentMoniker": "SimuTester\\FrmMain.cs",
+              "ToolTip": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "SimuTester\\FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T13:40:29.785Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ClsMathExpansion.cs",
               "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsMathExpansion.cs",
               "RelativeDocumentMoniker": "ModControlSimu\\ClsMathExpansion.cs",
               "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsMathExpansion.cs",
               "RelativeToolTip": "ModControlSimu\\ClsMathExpansion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-23T21:50:58.786Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FrmMain.cs",
               "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs",
               "RelativeDocumentMoniker": "SimuTester\\FrmMain.cs",
               "ToolTip": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs",
               "RelativeToolTip": "SimuTester\\FrmMain.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAQwIsAAAAbAAAA",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAMwF4AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-22T17:49:12.346Z",
               "EditorCaption": ""
@@ -78,37 +94,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs",
-              "RelativeDocumentMoniker": "SimuTester\\FrmMain.cs",
-              "ToolTip": "D:\\C#\\C-CtrlPractice\\SimuTester\\FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "SimuTester\\FrmMain.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T17:49:09.362Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "ModControlSimu.cs",
               "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.cs",
               "RelativeDocumentMoniker": "ModControlSimu\\ModControlSimu.cs",
               "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.cs",
               "RelativeToolTip": "ModControlSimu\\ModControlSimu.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAxwEkAAAA2AAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-22T15:48:00.821Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClsPolynomial.cs",
+              "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsPolynomial.cs",
+              "RelativeDocumentMoniker": "ModControlSimu\\ClsPolynomial.cs",
+              "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsPolynomial.cs",
+              "RelativeToolTip": "ModControlSimu\\ClsPolynomial.cs",
+              "ViewState": "AQIAAK0AAAAAAAAAAAApwNQAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T10:08:00.171Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ClsMatrixCalc.cs",
               "DocumentMoniker": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsMatrixCalc.cs",
               "RelativeDocumentMoniker": "ModControlSimu\\ClsMatrixCalc.cs",
               "ToolTip": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ClsMatrixCalc.cs",
               "RelativeToolTip": "ModControlSimu\\ClsMatrixCalc.cs",
-              "ViewState": "AQIAAJ8BAAAAAAAAAAAUwLYBAABIAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAALoBAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-22T15:47:57.051Z",
               "EditorCaption": ""

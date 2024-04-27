@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ModControlSimu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+948fe54fd16b9b7492d9859f91bed52cf94648d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2930c94d11c16cb16708812a31bda90d96ad8480")]
 [assembly: System.Reflection.AssemblyProductAttribute("ModControlSimu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ModControlSimu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,14 +17,14 @@ namespace ModControlSimu
     public class Matrix
     {
         /// <summary>格納するデータ</summary>
-        protected double[][]? Data;
+        protected double[][]? _Data;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public Matrix()
         {
-            Data = null;
+            _Data = null;
         }
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace ModControlSimu
         /// <param name="Col">初期化時の列数</param>
         public Matrix(int Row, int Col)
         {
-            Array.Resize(ref Data, Row);
+            Array.Resize(ref _Data, Row);
             Parallel.For(0, Row, Item =>
             {
-                Array.Resize(ref Data[Item], Col);
+                Array.Resize(ref _Data[Item], Col);
             });
         }
 
@@ -49,13 +49,13 @@ namespace ModControlSimu
         /// <param name="Data">初期化時の行列</param>
         public Matrix(double[][] InitData)
         {
-            Array.Resize(ref Data, InitData.Length);
+            Array.Resize(ref _Data, InitData.Length);
             Parallel.For(0, InitData.Length, Row =>
             {
-                Array.Resize(ref Data[Row], InitData[Row].Length);
+                Array.Resize(ref _Data[Row], InitData[Row].Length);
                 Parallel.For(0, InitData[0].Length, Col =>
                 {
-                    Data[Row][Col] = InitData[Row][Col];
+                    _Data[Row][Col] = InitData[Row][Col];
                 });
             });
         }
@@ -72,36 +72,36 @@ namespace ModControlSimu
             {
                 if (value == null)
                 {
-                    Data = null;
+                    _Data = null;
                 }
                 else
                 {
-                    Data ??= new double[Row][];
+                    _Data ??= new double[Row][];
                     if (Row >= RowCount())
                     {
                         int AddRow = Row + 1 - RowCount();
-                        Array.Resize(ref Data, Row + 1);
+                        Array.Resize(ref _Data, Row + 1);
                         Parallel.For(Row - AddRow + 1, Row + 1, InitRow =>
                         {
-                            Data[InitRow] = new double[ColCount()];
+                            _Data[InitRow] = new double[ColCount()];
                         });
                     }
                     if (Col >= ColCount())
                     {
-                        Parallel.For(0, Data.Length, _Row =>
+                        Parallel.For(0, _Data.Length, _Row =>
                         {
-                            Array.Resize(ref Data[_Row], Col + 1);
+                            Array.Resize(ref _Data[_Row], Col + 1);
                         });
                     }
-                    Data[Row][Col] = (double)value;
+                    _Data[Row][Col] = (double)value;
                 }
             }
             get
             {
-                if (Data == null) return null;
+                if (_Data == null) return null;
                 if (Row > RowCount()) return null;
                 if (Col > ColCount()) return null;
-                return Data[Row][Col];
+                return _Data[Row][Col];
             }
 
         }
@@ -214,8 +214,8 @@ namespace ModControlSimu
         /// <returns>行の数</returns>
         public int RowCount()
         {
-            if (Data == null) return 0;
-            else return Data.Length;
+            if (_Data == null) return 0;
+            else return _Data.Length;
         }
 
         /// <summary>
@@ -224,9 +224,9 @@ namespace ModControlSimu
         /// <returns>列の数</returns>
         public int ColCount()
         {
-            if (Data == null) return 0;
-            else if (Data[0] == null) return 0;
-            else return Data[0].Length;
+            if (_Data == null) return 0;
+            else if (_Data[0] == null) return 0;
+            else return _Data[0].Length;
         }
 
         /// <summary>
@@ -236,10 +236,10 @@ namespace ModControlSimu
         public double Det()
         {
             if (RowCount() != ColCount()) return -1;
-            if (Data == null) return -1;
+            if (_Data == null) return -1;
             //上三角行列へ変形し対角成分のみで計算する
             double? Ans = 1;
-            var UpTriMat = new Matrix(this.Data);
+            var UpTriMat = new Matrix(this._Data);
             for (int ZeroCol = 0; ZeroCol < ColCount() - 1; ZeroCol++)
             {
                 if (UpTriMat[ZeroCol, ZeroCol] == 0)
@@ -275,7 +275,7 @@ namespace ModControlSimu
         /// <returns>転置行列</returns>
         public Matrix Transpose()
         {
-            if (Data == null) return new Matrix();
+            if (_Data == null) return new Matrix();
             var TransMat = new Matrix(this.ColCount(), this.RowCount());
             Parallel.For(0, this.RowCount(), Row =>
             {
@@ -338,12 +338,12 @@ namespace ModControlSimu
         /// <returns>掃き出し法の結果</returns>
         public Matrix RowReduction()
         {
-            if (Data == null) return new Matrix();
+            if (_Data == null) return new Matrix();
             if (RowCount() >= ColCount()) return new Matrix();
             if (this.GetSquarePart().Det() == 0) return new Matrix();
 
             //計算用に別の行列に格納
-            var Mat = new Matrix(this.Data);
+            var Mat = new Matrix(this._Data);
 
             //対角成分より下を"0"にする
             for (int ZeroCol = 0; ZeroCol < Mat.RowCount() - 1; ZeroCol++)
@@ -421,11 +421,11 @@ namespace ModControlSimu
         /// <param name="RowB">行2</param>
         protected Matrix RowSwap(int RowA, int RowB)
         {
-            if (Data == null) return new Matrix();
+            if (_Data == null) return new Matrix();
             double[] TmpArray = new double[ColCount()];
-            Array.Copy(Data[RowA], TmpArray, ColCount());
-            Array.Copy(Data[RowB], Data[RowA], ColCount());
-            Array.Copy(TmpArray, Data[RowB], ColCount());
+            Array.Copy(_Data[RowA], TmpArray, ColCount());
+            Array.Copy(_Data[RowB], _Data[RowA], ColCount());
+            Array.Copy(TmpArray, _Data[RowB], ColCount());
             return this;
         }
 
@@ -438,18 +438,17 @@ namespace ModControlSimu
         /// <returns>表示用文字列</returns>
         public string ToString(bool NewLine = false, string Format = "")
         {
-            if (Data == null) return "null";
+            if (_Data == null) return "null";
 
             var Sb = new StringBuilder();
-            Sb.Length = 0;
 
             for (int Row = 0; Row < RowCount(); Row++)
             {
-                if (Data[Row] == null) return string.Empty;
+                if (_Data[Row] == null) return string.Empty;
                 Sb.Append('(');
                 for (int Col = 0; Col < ColCount(); Col++)
                 {
-                    Sb.Append(Data[Row][Col].ToString(Format));
+                    Sb.Append(_Data[Row][Col].ToString(Format));
                     Sb.Append("\t,");
                 }
                 Sb.Remove(Sb.Length - 1, 1);

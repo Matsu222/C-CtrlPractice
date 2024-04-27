@@ -14,9 +14,9 @@ namespace ModControlSimu
     public class ClsTfSs
     {
         /// <summary>伝達関数の分母多項式係数</summary>
-        private double[][] _TfDen;
+        private Polynomial[] _TfDen;
         /// <summary>伝達関数の分子多項式係数</summary>
-        private double[][] _TfNum;
+        private Polynomial[] _TfNum;
         /// <summary>状態方程式のA行列</summary>
         private Matrix _A;
         /// <summary>状態方程式のB行列</summary>
@@ -31,8 +31,8 @@ namespace ModControlSimu
         /// </summary>
         public ClsTfSs()
         {
-            _TfDen = new double[1][];
-            _TfNum = new double[1][];
+            _TfDen = new Polynomial[1];
+            _TfNum = new Polynomial[1];
             _A = new Matrix();
             _B = new Matrix();
             _C = new Matrix();
@@ -45,36 +45,27 @@ namespace ModControlSimu
         /// </summary>
         /// <param name="Den">分母多項式の係数</param>
         /// <param name="Num">分子多項式の係数</param>
-        public void SetSys(double[] Den, double[] Num)
+        public void SetSys(Polynomial Den, Polynomial Num)
         {
-            _TfDen = new double[1][];
-            _TfDen[0] = new double[Den.Length];
-            _TfNum = new double[1][];
-            _TfNum[0] = new double[Num.Length];
-            Parallel.For(0, Den.Length, i =>
-            {
-                _TfDen[0][i] = Den[i] / Den[Den.Length - 1];
-            });
-            Parallel.For(0, Num.Length, i =>
-            {
-                _TfNum[0][i] = Num[i] / Den[_TfDen.Length - 1];
-            });
-
-            _A = new Matrix(Den.Length, Den.Length);
-            _B = new Matrix(Den.Length, 1);
-            _C = new Matrix(1, Den.Length);
+            _TfDen = new Polynomial[1];
+            _TfDen[0] = Den;
+            _TfNum = new Polynomial[1];
+            _TfNum[0] = Num;
+            _A = new Matrix(Den.GetOrder() + 1, Den.GetOrder() + 1);
+            _B = new Matrix(Den.GetOrder() + 1, 1);
+            _C = new Matrix(1, Den.GetOrder() + 1);
             _D = new Matrix();
 
-            Parallel.For(0, Den.Length - 1, i =>
+            Parallel.For(0, Den.GetOrder() + 1 - 1, i =>
             {
                 _A[i, i + 1] = 1;
             });
-            Parallel.For(0, Den.Length, i =>
+            Parallel.For(0, Den.GetOrder() + 1, i =>
             {
-                _A[Den.Length - 1, i] = -_TfDen[0][i];
+                _A[Den.GetOrder() + 1 - 1, i] = -_TfDen[0][i];
             });
-            _B[Den.Length - 1, 0] = 1;
-            Parallel.For(0, Den.Length - 1, i =>
+            _B[Den.GetOrder() + 1 - 1, 0] = 1;
+            Parallel.For(0, Den.GetOrder() + 1 - 1, i =>
             {
                 if (i < _TfNum.Length) _C[0, i] = _TfNum[0][i];
                 else _C[0, i] = 0;
@@ -103,12 +94,12 @@ namespace ModControlSimu
         /// <param name="Den">分母多項式の係数</param>
         /// <param name="Num">分子多項式の係数</param>
         /// <param name="InputNo">入力ベクトルのインデックス</param>
-        public void GetSys(out double[] Den, out double[] Num, int InputNo)
+        public void GetSys(out Polynomial Den, out Polynomial Num, int InputNo)
         {
             if (_TfDen.GetLength(0) < InputNo)
             {
-                Den = new double[1];
-                Num = new double[1];
+                Den = new Polynomial();
+                Num = new Polynomial();
             }
             else
             {
@@ -150,13 +141,13 @@ namespace ModControlSimu
             {
                 var Omega = 2 * Math.PI * Freq[Point];
                 var NumValue = new Complex(0, 0);
-                for (int Order = 0; Order < _TfNum[InputNo].Length; Order++)
+                for (int Order = 0; Order < _TfNum[InputNo].GetOrder() + 1; Order++)
                 {
                     if (Order % 2 == 0) NumValue += new Complex(_TfNum[InputNo][Order] * Math.Pow(-1, Order / 2) * Math.Pow(Omega, Order), 0);
                     else NumValue += new Complex(0, _TfNum[InputNo][Order] * Math.Pow(-1, (Order - 1) / 2) * Math.Pow(Omega, Order));
                 }
                 var DenValue = new Complex(0, 0);
-                for (int Order = 0; Order < _TfDen[InputNo].Length; Order++)
+                for (int Order = 0; Order < _TfDen[InputNo].GetOrder() + 1; Order++)
                 {
                     if (Order % 2 == 0) DenValue += new Complex(_TfDen[InputNo][Order] * Math.Pow(-1, Order / 2) * Math.Pow(Omega, Order), 0);
                     else DenValue += new Complex(0, _TfDen[InputNo][Order] * Math.Pow(-1, (Order - 1) / 2) * Math.Pow(Omega, Order));
