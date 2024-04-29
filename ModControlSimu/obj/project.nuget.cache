@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "l1f0pw1xTSYsVN8oduF+QT/aJ3LOWrdj0Si/1SyvdOppokaPgs65HK178/9XcUHTh5y3u0VM/dZE6s4Yt7Gmqg==",
+  "dgSpecHash": "O0yZhvYl0HjXEIyvHg/GQ4JyFWxGeFtMu4+rZSQ6U3Pp/xGH8Jn2gYO13gKscTybMK/4pdJPYJDqL9EkAtJ/Og==",
   "success": true,
   "projectFilePath": "D:\\C#\\C-CtrlPractice\\ModControlSimu\\ModControlSimu.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jazzm\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jazzm\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

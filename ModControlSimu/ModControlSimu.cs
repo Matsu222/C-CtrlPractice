@@ -1,10 +1,6 @@
-﻿using System.Data;
-using System.Diagnostics;
-using System.IO.Compression;
+﻿using System;
 using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 namespace ModControlSimu
 {

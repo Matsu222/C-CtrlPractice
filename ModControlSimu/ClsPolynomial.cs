@@ -17,7 +17,7 @@ namespace ModControlSimu
     public class Polynomial
     {
         /// <summary>格納する多項式の係数配列</summary>
-        private double[]? _Data;
+        private double[] _Data;
 
         /// <summary>
         /// コンストラクタ

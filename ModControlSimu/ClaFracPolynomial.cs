@@ -12,9 +12,9 @@ namespace ModControlSimu
     public class FracPolynomial
     {
         /// <summary>分子多項式</summary>
-        public Polynomial? Num { get; private set; }
+        public Polynomial Num { get; private set; }
         /// <summary>分母多項式</summary>
-        public Polynomial? Den { get; private set; }
+        public Polynomial Den { get; private set; }
 
         /// <summary>
         /// コンストラクタ

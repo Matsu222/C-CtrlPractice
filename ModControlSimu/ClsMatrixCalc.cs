@@ -4,7 +4,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace ModControlSimu
     public class Matrix
     {
         /// <summary>格納するデータ</summary>
-        protected double[][]? _Data;
+        protected double[][] _Data;
 
         /// <summary>
         /// コンストラクタ
@@ -76,7 +75,7 @@ namespace ModControlSimu
                 }
                 else
                 {
-                    _Data ??= new double[Row][];
+                    _Data = new double[Row][];
                     if (Row >= RowCount())
                     {
                         int AddRow = Row + 1 - RowCount();

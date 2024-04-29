@@ -12,7 +12,7 @@ namespace ModControlSimu
     public class PolyMatrix
     {
         /// <summary>要素として格納する多項式</summary>
-        protected Polynomial[][]? Data;
+        protected Polynomial[][] Data;
 
 
     }
