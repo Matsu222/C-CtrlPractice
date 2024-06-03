@@ -23,7 +23,8 @@ namespace ModControlSimu
         /// </summary>
         public Matrix()
         {
-            _Data = null;
+            _Data = new double[1][];
+            _Data[0] = new double[1];
         }
 
         /// <summary>
@@ -69,35 +70,27 @@ namespace ModControlSimu
         {
             set
             {
-                if (value == null)
+                if (Row >= RowCount())
                 {
-                    _Data = null;
+                    int AddRow = Row + 1 - RowCount();
+                    Array.Resize(ref _Data, Row + 1);
+                    Parallel.For(Row - AddRow + 1, Row + 1, InitRow =>
+                    {
+                        _Data[InitRow] = new double[ColCount()];
+                    });
                 }
-                else
+                if (Col >= ColCount())
                 {
-                    _Data = new double[Row][];
-                    if (Row >= RowCount())
+                    Parallel.For(0, _Data.Length, _Row =>
                     {
-                        int AddRow = Row + 1 - RowCount();
-                        Array.Resize(ref _Data, Row + 1);
-                        Parallel.For(Row - AddRow + 1, Row + 1, InitRow =>
-                        {
-                            _Data[InitRow] = new double[ColCount()];
-                        });
-                    }
-                    if (Col >= ColCount())
-                    {
-                        Parallel.For(0, _Data.Length, _Row =>
-                        {
-                            Array.Resize(ref _Data[_Row], Col + 1);
-                        });
-                    }
-                    _Data[Row][Col] = (double)value;
+                        Array.Resize(ref _Data[_Row], Col + 1);
+                    });
                 }
+                _Data[Row][Col] = (double)value;
+
             }
             get
             {
-                if (_Data == null) return null;
                 if (Row > RowCount()) return null;
                 if (Col > ColCount()) return null;
                 return _Data[Row][Col];

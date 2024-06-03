@@ -6,6 +6,7 @@ using ModControlSimu;
 using System.Drawing.Printing;
 using System.Configuration;
 using System.Numerics;
+using System.Xml.Linq;
 
 namespace SimuTester
 {
@@ -29,13 +30,13 @@ namespace SimuTester
         {
             Ans_Box.Text = string.Empty;
             var Rnd = new Random();
-            for (int Row = 0; Row < 10; Row++)
+            for (int Row = 0; Row < 5; Row++)
             {
-                for (int Col = 0; Col < 2; Col++)
+                for (int Col = 0; Col < 5; Col++)
                 {
-                    A[Row, Col] = Rnd.Next(10);
+                    A[Row, Col] = (double)Rnd.Next(10)/10;
+                    Console.WriteLine(A[Row, Col]);
                 }
-                A[Row, A.ColCount() - 1] = 1;
                 B[Row, 0] = Rnd.Next(10);
             }
 
@@ -43,13 +44,9 @@ namespace SimuTester
 
             Sb.Append(A.ToString(true, "0.######"));
             Sb.Append("\r\n\r\n");
-            Sb.Append(B.ToString(true, "0.######"));
+            Sb.Append(A.Inv().ToString(true, "0.######"));
             Sb.Append("\r\n\r\n");
-            Sb.Append((A.Transpose() * A).ToString(true, "0.######"));
-            Sb.Append("\r\n\r\n");
-            Sb.Append(A.Pinv().ToString(true, "0.######"));
-            Sb.Append("\r\n\r\n");
-            Sb.Append((A.Pinv() * B).ToString(true, "0.######"));
+            Sb.Append((A.Inv() * A).ToString(true, "0.######"));
 
             Ans_Box.Text = Sb.ToString();
         }

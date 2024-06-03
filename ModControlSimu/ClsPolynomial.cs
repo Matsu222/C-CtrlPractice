@@ -24,7 +24,7 @@ namespace ModControlSimu
         /// </summary>
         public Polynomial()
         {
-            _Data = null;
+            _Data = new double[1];
         }
 
         /// <summary>
