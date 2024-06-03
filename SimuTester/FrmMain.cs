@@ -30,23 +30,17 @@ namespace SimuTester
         {
             Ans_Box.Text = string.Empty;
             var Rnd = new Random();
-            for (int Row = 0; Row < 5; Row++)
+            for (int Row = 0; Row < 100; Row++)
             {
-                for (int Col = 0; Col < 5; Col++)
-                {
-                    A[Row, Col] = (double)Rnd.Next(10)/10;
-                    Console.WriteLine(A[Row, Col]);
-                }
-                B[Row, 0] = Rnd.Next(10);
+                A[Row, 2] = 1;
+                A[Row, 1] = Rnd.NextDouble();
+                A[Row, 0] = A[Row, 1] * A[Row, 1];
+                B[Row, 0] = -10 * A[Row, 0] + 5 * A[Row, 1] + 6 + (Rnd.NextDouble() - 0.5);
             }
 
             var Sb = new StringBuilder();
-
-            Sb.Append(A.ToString(true, "0.######"));
+            Sb.Append((A.Pinv() * B).ToString(true, "0.###"));
             Sb.Append("\r\n\r\n");
-            Sb.Append(A.Inv().ToString(true, "0.######"));
-            Sb.Append("\r\n\r\n");
-            Sb.Append((A.Inv() * A).ToString(true, "0.######"));
 
             Ans_Box.Text = Sb.ToString();
         }

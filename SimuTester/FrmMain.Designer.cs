@@ -43,6 +43,7 @@
             Ans_Box.ScrollBars = ScrollBars.Both;
             Ans_Box.Size = new Size(750, 600);
             Ans_Box.TabIndex = 0;
+            Ans_Box.WordWrap = false;
             // 
             // Matrix_Button
             // 

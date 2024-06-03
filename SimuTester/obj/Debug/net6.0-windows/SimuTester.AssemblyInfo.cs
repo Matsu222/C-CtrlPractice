@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimuTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+456dd76f395655ba9c5b5664f9908c1abe91a80f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4eba7cd0f6e84c635a5cc7188947ac9e8279de43")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimuTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimuTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

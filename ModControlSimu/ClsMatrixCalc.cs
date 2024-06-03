@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -179,9 +180,13 @@ namespace ModControlSimu
                 Parallel.For(0, Y.ColCount(), Col =>
                 {
                     Ans[Row, Col] = 0;
-                    Parallel.For(0, X.ColCount(), i =>
+                    for (int i = 0; i < X.ColCount(); i++)
                     {
                         Ans[Row, Col] += X[Row, i] * Y[i, Col];
+                    }
+                    Parallel.For(0, Y.ColCount(), i =>
+                    {
+
                     });
                 });
             });
@@ -333,10 +338,8 @@ namespace ModControlSimu
             if (_Data == null) return new Matrix();
             if (RowCount() >= ColCount()) return new Matrix();
             if (this.GetSquarePart().Det() == 0) return new Matrix();
-
             //計算用に別の行列に格納
             var Mat = new Matrix(this._Data);
-
             //対角成分より下を"0"にする
             for (int ZeroCol = 0; ZeroCol < Mat.RowCount() - 1; ZeroCol++)
             {
@@ -359,7 +362,7 @@ namespace ModControlSimu
                     });
                 }
             }
-            //対角成分を"0"にする
+            //対角成分を"1"にする
             Parallel.For(0, Mat.RowCount(), Row =>
             {
                 double? Coef = Mat[Row, Row];
@@ -380,7 +383,6 @@ namespace ModControlSimu
                     });
                 }
             }
-
             return Mat;
         }
 
